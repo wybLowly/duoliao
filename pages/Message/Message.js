@@ -18,12 +18,12 @@ export default class Main extends Component {
     }
 
     render() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 50; i++) {
             MessageListData.push({
                 id: i,
                 name: '好友' + i,
                 from: '客服' + i,
-                contentText: '这是聊天内容这是聊天内容这是聊天内容这是聊天内容' + i,
+                contentText: '这是和好友' + i + '的聊天内容的聊天内容的聊天内容的聊天内容的聊天内容的聊天内容',
                 time: '8/18 6:06'
             });
         }
@@ -33,7 +33,7 @@ export default class Main extends Component {
                     data={MessageListData}
                     keyExtractor={this._keyExtractor}
                     ItemSeparatorComponent={this._separator}
-                    showsVerticalScrollIndicator = {false}
+                    showsVerticalScrollIndicator={false}
                     renderItem={this._listRender}
                 />
             </View>
@@ -54,8 +54,8 @@ export default class Main extends Component {
                     <Image source={require('../../images/user_header.png')} style={styles.userHeader}/>
                 </View>
                 <View style={styles.content}>
-                    <Text style={styles.friendName}>{item.item.name}</Text>
-                    <Text style={styles.contentText}>{item.item.contentText}</Text>
+                    <Text style={styles.friendName} numberOfLines={1}>{item.item.name}</Text>
+                    <Text style={styles.contentText} numberOfLines={1}>{item.item.contentText}</Text>
                 </View>
                 <View style={styles.messageTime}>
                     <Text style={{fontSize: 14, color: '#ccc'}}>

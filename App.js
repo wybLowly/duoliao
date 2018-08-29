@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {
+    AppRegistry,
     StyleSheet,
     View,
     Image,
-    Text
+    Text,
+    Alert
 } from 'react-native';
-import TabNavigator from 'react-native-tab-navigator'
-import MessageList from './pages/Message/Message'
+// import TabNavigator from 'react-native-tab-navigator'
+import TabNav from './pages/TabNav'
+
 
 export default class Main extends Component {
     constructor(props) {
@@ -31,56 +34,7 @@ export default class Main extends Component {
                         <Image source={require('./images/add.png')} style={styles.headerIcon}/>
                     </View>
                 </View>
-                <TabNavigator>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === '消息'}
-                        title="消息"
-                        titleStyle={styles.tabText}
-                        selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => this._tabIconRender('1')}
-                        renderSelectedIcon={() => this._tabIconSelectedRender('1')}
-                        onPress={() => this.setState({selectedTab: '消息'})}>
-                        <MessageList/>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === '粉丝'}
-                        title="粉丝"
-                        titleStyle={styles.tabText}
-                        selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => this._tabIconRender('2')}
-                        renderSelectedIcon={() => this._tabIconSelectedRender('2')}
-                        onPress={() => this.setState({selectedTab: '粉丝'})}>
-                        <View>
-
-                        </View>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === '群发'}
-                        title="群发"
-                        titleStyle={styles.tabText}
-                        selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => this._tabIconRender('3')}
-                        renderSelectedIcon={() => this._tabIconSelectedRender('3')}
-                        onPress={() => this.setState({selectedTab: '群发'})}>
-                        <View>
-
-                        </View>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === '朋友圈'}
-                        title="朋友圈"
-                        titleStyle={styles.tabText}
-                        selectedTitleStyle={styles.selectedTabText}
-                        renderIcon={() => this._tabIconRender('4')}
-                        renderSelectedIcon={() => this._tabIconSelectedRender('4')}
-                        onPress={() => this.setState({selectedTab: '朋友圈'})}>
-                        <View>
-
-                        </View>
-                    </TabNavigator.Item>
-                </TabNavigator>
-
-
+                <TabNav/>
             </View>
         );
     }
@@ -128,6 +82,10 @@ export default class Main extends Component {
         return (
             <Image source={url} style={styles.icon}/>
         );
+    }
+
+    _touchMove(event) {
+        Alert.alert('消息', '1231');
     }
 }
 
