@@ -5,7 +5,8 @@ import {
     View,
     Image,
     Text,
-    Alert
+    Alert,
+    Button
 } from 'react-native';
 // import TabNavigator from 'react-native-tab-navigator'
 import TabNav from './pages/TabNav'
@@ -34,58 +35,10 @@ export default class Main extends Component {
                         <Image source={require('./images/add.png')} style={styles.headerIcon}/>
                     </View>
                 </View>
+
                 <TabNav/>
             </View>
         );
-    }
-
-
-    _tabIconRender(type) {
-        let url;
-        switch (type) {
-            case '1':    //消息列表
-                url = require('./images/message.png');
-                break;
-            case '2':    //粉丝中心
-                url = require('./images/fans_center.png');
-                break;
-            case '3':    //群发
-                url = require('./images/group.png');
-                break;
-            case '4':   //朋友圈
-                url = require('./images/friends.png');
-                break;
-        }
-
-        return (
-            <Image source={url} style={styles.icon}/>
-        );
-    }
-
-    _tabIconSelectedRender(type) {
-        let url;
-        switch (type) {
-            case '1'://消息列表
-                url = require('./images/message_selected.png');
-                break;
-            case '2':  //粉丝中心
-                url = require('./images/fans_center_selected.png');
-                break;
-            case '3': //群发
-                url = require('./images/group_selected.png');
-                break;
-            case '4':  //朋友圈
-                url = require('./images/friends_selected.png');
-                break;
-        }
-
-        return (
-            <Image source={url} style={styles.icon}/>
-        );
-    }
-
-    _touchMove(event) {
-        Alert.alert('消息', '1231');
     }
 }
 
