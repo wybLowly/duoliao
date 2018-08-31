@@ -25,11 +25,10 @@ const handleMenuData = [
 ];
 
 export default class Main extends Component {
-    constructor(props) {
-        super(props)
-        // super.props
-        this.state = {}
-    }
+
+    state = {
+        showModal: false
+    };
 
     render() {
         for (let i = 0; i < 50; i++) {
@@ -50,6 +49,7 @@ export default class Main extends Component {
                     showsVerticalScrollIndicator={false}
                     renderItem={this._listRender}
                 />
+                <PopupWindow visible={this.state.showModal}/>
             </View>
         )
     }
@@ -78,35 +78,20 @@ export default class Main extends Component {
                                 {item.item.time}
                             </Text>
                         </View>
-                        <FlatList
-                            data={handleMenuData}
-                            style={styles.handleMenu}
-                            renderItem={this._menuRender}
-                            keyExtractor={this._keyExtractor}
-                        />
                     </View>
                 </TouchableHighlight>
             </View>
         )
     };
 
-    _menuRender = item => {
-        return (
-            <TouchableHighlight onPress={this._handleMenu(item.item.menuId)} underlayColor={'#c9c7c6'}>
-                <View>
-                    <Text style={styles.menuItem}>{item.item.name}</Text>
-                </View>
-            </TouchableHighlight>
-        );
-    };
 
-    _clickItem() {
+    _clickItem(e) {
         // Alert.alert('点击了好友');
+        console.log(e);
+        this.state.showModal = true;
     };
 
-    _handleMenu(menuId) {
 
-    };
 }
 
 
@@ -147,17 +132,4 @@ let styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginBottom: 10
     },
-    handleMenu: {
-        position: 'absolute',
-        right: 10,
-        zIndex: 50
-    },
-    menuItem: {
-        width: 100,
-        height: 30,
-        textAlignVertical: 'center',
-        backgroundColor: '#fff',
-        textAlign: 'center',
-        fontSize: 11
-    }
 });
